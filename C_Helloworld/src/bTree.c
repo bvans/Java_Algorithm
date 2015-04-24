@@ -19,6 +19,7 @@ Node empty() {
 //	}
 //
 //	Node root = {
+
 //			data[0],
 //			NULL,
 //			NULL
