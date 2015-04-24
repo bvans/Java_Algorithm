@@ -26,7 +26,6 @@ int main(void) {
 	long start = clock();
 	long now;
 
-
 	srand(clock());
 	printf("%ld\n", rand() % 100);
 
