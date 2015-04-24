@@ -63,6 +63,7 @@ void insert(Node *root, int x) {
 	}
 
 	Node node = { x, NULL, NULL };
+
 	return;
 }
 
