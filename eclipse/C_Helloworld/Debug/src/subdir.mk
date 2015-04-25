@@ -7,19 +7,22 @@ C_SRCS += \
 ../src/bTree.c \
 ../src/main.c \
 ../src/quickSort.c \
-../src/sundayMatch.c 
+../src/sundayMatch.c \
+../src/util.c 
 
 OBJS += \
 ./src/bTree.o \
 ./src/main.o \
 ./src/quickSort.o \
-./src/sundayMatch.o 
+./src/sundayMatch.o \
+./src/util.o 
 
 C_DEPS += \
 ./src/bTree.d \
 ./src/main.d \
 ./src/quickSort.d \
-./src/sundayMatch.d 
+./src/sundayMatch.d \
+./src/util.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

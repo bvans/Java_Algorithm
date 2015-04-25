@@ -1,11 +1,9 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "tree.h"
-
-#define PD(x) printf("%ld", (x))
-#define PS(x) printf("%s", (x))
-#define PN printf("\n")
+#include "util.h"
 
 /*
  * main.c
@@ -14,27 +12,41 @@
  *      Author: Administrator
  */
 
-void change(int *arr, int length);
-
 int main(void) {
-	int a[10];
-	int i = 0;
-	while (i < 10)
-		a[i++] = rand();
+	setbuf(stdout, NULL);
 
-	Node *root = init(a, 1);
-	long start = clock();
-	long now;
+	int i, j ,k, h;
 
-	srand(clock());
-	printf("%ld\n", rand() % 100);
+	k = 0;
+	scanf("%d", &k);
+	if (k <= 0 || k > 100000) {
+		return 0;
+	}
 
-	now = time(NULL);
-	srand(now);
-	printf("%ld\n", rand() % 100);
+	int num[k];
+	for (i = 0; i < k; i++)
+		scanf("%d", &num[i]);
+
+	int max = 0;
+	int sum;
+
+	for (i = 0; i < k; i++) {
+		for (j = i + 1; j < k; j++) {
+			sum = 0;
+			for (h = i; h <= j; h++) {
+				sum += num[h];
+				if(sum > max)
+					max = sum;
+			}
+		}
+	}
+
+	if (max < 0) {
+		printf("%d\n", 0);
+	} else {
+		printf("%d\n", max);
+	}
+	return 0;
 
 }
 
-void change(int *arr, int length) {
-	arr[0] = 12;
-}
