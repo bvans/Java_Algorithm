@@ -12,6 +12,7 @@ int maxSub1(void) {
 	scanf("%d", &k);
 	if (k <= 0 || k > 100000) {
 		return 0;
+
 	}
 
 	int num[k];
@@ -41,3 +42,9 @@ int maxSub1(void) {
 	return max;
 }
 
+int maxSub2(void) {
+	int k = 0;
+	int i, j;
+	int sum, max;
+
+}
