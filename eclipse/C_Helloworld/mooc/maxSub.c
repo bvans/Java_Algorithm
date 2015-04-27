@@ -76,4 +76,6 @@ int maxSub2(void) {
 	} else {
 		printf("%d\n", max);
 	}
+
+	return max;
 }
