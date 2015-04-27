@@ -16,7 +16,7 @@
 int main(void) {
 	setbuf(stdout, NULL);
 
-	maxSub1();
+	maxSub2();
 	return 0;
 
 }
