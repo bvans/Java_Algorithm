@@ -16,6 +16,7 @@
 
 
 int rand1(void);
+int randN(int x);
 void srand1(unsigned int seed);
 
 

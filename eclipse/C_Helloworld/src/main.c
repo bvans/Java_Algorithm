@@ -14,9 +14,10 @@
  */
 
 int main(void) {
-	setbuf(stdout, NULL);
 
-	maxSub2();
+	setbuf(stdout, NULL);
+	float pi = PI;
+	maxSub3();
 	return 0;
 
 }

@@ -8,39 +8,23 @@
 #include <stdlib.h>
 #include "tree.h"
 
+void init(int data[], int len, Node *root);
+void insert(Node *root, int x);
+
 Node empty() {
 	Node root = { 0, NULL, NULL };
 	return root;
 }
 
-//Node init(int data[], int length){
-//	if(len < 0) {
-//		return empty();
-//	}
-//
-//	Node root = {
-//			data[0],
-//			NULL,
-//			NULL
-//	};
-//
-//	int i;
-//	for (i = 0; i <length; i++) {
-//
-//	}
-//}
 
-Node *init(int data[], int len) {
+void init(int data[], int len, Node *root) {
 	if(len <= 0)
-		return NULL;
-
-	Node root = {data[0], NULL, NULL};
+		return;
 
 	int i;
 	for(i = 1; i < len; i++) {
-		insert(&root, data[i]);
+		insert(root, data[i]);
 	}
-	return &root;
 }
 
 void insert(Node *root, int x) {

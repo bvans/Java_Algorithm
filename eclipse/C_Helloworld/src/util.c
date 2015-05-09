@@ -12,6 +12,12 @@ int rand1(void) {
 	return next;
 }
 
+int randN(int x) {
+	//产生随机数的魔术般的公式
+	next = (unsigned int) (next * 1103515245 + 12345) % x;
+	return next;
+}
+
 void srand1(unsigned int seed) {
 	next = seed;
 }

@@ -17,5 +17,5 @@ typedef struct node {
 	struct node *right;
 } Node;
 
-Node *init(int data[], int len);
+void init(int data[], int len, Node *root);
 Node empty();
