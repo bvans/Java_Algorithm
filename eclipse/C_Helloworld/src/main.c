@@ -17,6 +17,9 @@ int main(void) {
 
 	setbuf(stdout, NULL);
 	float pi = PI;
+	printf("%f\n", pi);
+
+
 	maxSub3();
 	return 0;
 

@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 
+int maxSub33(const int arr[], int *start, int *end, int *max);
+
 int maxSub1(void) {
 	int k, i;
 
