@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<TITLE>Data Structures in Java
+</TITLE>
+</HEAD>
+<BODY>
+<UL>
+<LI><A HREF="AddPolyn.java">AddPolyn.java</A>
+<LI><A HREF="AllFiles.zip">AllFiles.zip</A>
+<LI><A HREF="ArrayQueue.java">ArrayQueue.java</A>
+<LI><A HREF="BankSimulation.java">BankSimulation.java</A>
+<LI><A HREF="BST.java">BST.java</A>
+<LI><A HREF="BSTNode.java">BSTNode.java</A>
+<LI><A HREF="Collector.java">Collector.java</A>
+<LI><A HREF="committees">committees</A>
+<LI><A HREF="Database.java">Database.java</A>
+<LI><A HREF="DbObject.java">DbObject.java</A>
+<LI><A HREF="dictionary">dictionary</A>
+<LI><A HREF="DistinctRepresentatives.java">DistinctRepresentatives.java</A>
+<LI><A HREF="FileHashing.java">FileHashing.java</A>
+<LI><A HREF="Heap.java">Heap.java</A>
+<LI><A HREF="HuffmanCoding.java">HuffmanCoding.java</A>
+<LI><A HREF="HuffmanDecoder.java">HuffmanDecoder.java</A>
+<LI><A HREF="HuffmanEncoder.java">HuffmanEncoder.java</A>
+<LI><A HREF="IntBST.java">IntBST.java</A>
+<LI><A HREF="IntBSTNode.java">IntBSTNode.java</A>
+<LI><A HREF="IntDLList.java">IntDLList.java</A>
+<LI><A HREF="IntDLLNode.java">IntDLLNode.java</A>
+<LI><A HREF="Interpreter.java">Interpreter.java</A>
+<LI><A HREF="IntNode.java">IntNode.java</A>
+<LI><A HREF="IntSkipList.java">IntSkipList.java</A>
+<LI><A HREF="IntSkipListNode.java">IntSkipListNode.java</A>
+<LI><A HREF="IntSLList.java">IntSLList.java</A>
+<LI><A HREF="IntThreadedTree.java">IntThreadedTree.java</A>
+<LI><A HREF="IntThreadedTreeNode.java">IntThreadedTreeNode.java</A>
+<LI><A HREF="IOmethods.java">IOmethods.java</A>
+<LI><A HREF="Library.java">Library.java</A>
+<LI><A HREF="LLStack.java">LLStack.java</A>
+<LI><A HREF="Maze.java">Maze.java</A>
+<LI><A HREF="Personal.java">Personal.java</A>
+<LI><A HREF="Queens.java">Queens.java</A>
+<LI><A HREF="Queue.java">Queue.java</A>
+<LI><A HREF="SLList.java">SLList.java</A>
+<LI><A HREF="SLLNode.java">SLLNode.java</A>
+<LI><A HREF="Sorts.java">Sorts.java</A>
+<LI><A HREF="SpellCheck.java">SpellCheck.java</A>
+<LI><A HREF="SplayTreeNode.java">SplayTreeNode.java</A>
+<LI><A HREF="SplayTree.java">SplayTree.java</A>
+<LI><A HREF="Stack.java">Stack.java</A>
+<LI><A HREF="Student.java">Student.java</A>
+<LI><A HREF="Trie.java">Trie.java</A>
+<LI><A HREF="UseDatabase.java">UseDatabase.java</A>
+<LI><A HREF="vonKoch.java">vonKoch.java</A>
+<LI><A HREF="WordSplaying.java">WordSplaying.java</A>
+</UL>
+</BODY>
+</HTML>
