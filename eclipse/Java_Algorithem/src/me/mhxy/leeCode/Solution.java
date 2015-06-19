@@ -1,4 +1,4 @@
-package me.mhxy.test;
+package me.mhxy.leeCode;
 
 public class Solution {
     public static boolean isPalindrome(int x) {
