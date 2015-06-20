@@ -1,6 +1,6 @@
 package me.mhxy.leeCode;
 
-public class Solution {
+public class PalindromeNumber {
     public static boolean isPalindrome(int x) {
     	if (x < 0) {
     		return false;
