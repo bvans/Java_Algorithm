@@ -4,7 +4,7 @@ public class Queens {
 	static final boolean available = true;
 
 	// norm用于右对角线row-col+norm得到一个正值.
-	static final int squares = 4, norm = squares - 1;
+	static final int squares = 8, norm = squares - 1;
 
 	// i表示第i行的皇后放在positionInRow[i]列
 	static int[] positionInRow = new int[squares];
