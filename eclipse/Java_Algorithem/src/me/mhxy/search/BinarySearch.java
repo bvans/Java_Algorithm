@@ -28,7 +28,7 @@ public class BinarySearch {
 
 	public static void main(String[] args) {
 		int[] test = new int[] { 1, 34, 344, 355, 3000, 8888 };
-		int result = search(test, 0, 355);
+		int result = search(test, test.length, -1);
 		System.out.println(result);
 	}
 }

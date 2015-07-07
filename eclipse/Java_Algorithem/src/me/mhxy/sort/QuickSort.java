@@ -1,5 +1,7 @@
 package me.mhxy.sort;
 
+import java.util.Arrays;
+
 public class QuickSort {
 	public static void sort(int arr[], int start, int end) {
 		if (start >= end)
@@ -29,9 +31,10 @@ public class QuickSort {
 		int[] arr = new int[10];
 
 		for (int i = 0; i < 10; i++) {
-			arr[i] = (int) Math.floor((Math.random() * 11));
+			arr[i] = (int) Math.floor((Math.random() * 111));
 		}
-
+		System.out.println(Arrays.toString(arr));
 		sort(arr, 0, arr.length - 1);
+		System.out.println(Arrays.toString(arr));
 	}
 }
