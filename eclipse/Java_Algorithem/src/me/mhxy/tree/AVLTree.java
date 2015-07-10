@@ -44,8 +44,8 @@ public class AVLTree extends BSTTree {
 		}
 		
 		super.add(node);
-		int leftHeight = getHeight(root.left);
-		int rightHeight = getHeight(root.right);
+		int leftHeight = getMaxDepth(root.left);
+		int rightHeight = getMaxDepth(root.right);
 		
 		if(node.val < root.val) {
 			if((leftHeight - rightHeight) == 2) {

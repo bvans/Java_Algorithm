@@ -4,11 +4,8 @@ package me.mhxy.tree;
 public class TreeNode{
 	public TreeNode left;
 	public TreeNode right;
+	public TreeNode next;
 	public int val;
-	
-	public TreeNode() {
-		
-	}
 	
 	public TreeNode(int data) {
 		this.val = data;

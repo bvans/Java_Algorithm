@@ -3,7 +3,7 @@ package me.mhxy.tree;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BSTTree extends Tree{
+public class BSTTree extends Tree {
 	public TreeNode root = null;
 
 	public BSTTree() {
@@ -143,7 +143,6 @@ public class BSTTree extends Tree{
 
 	}
 
-
 	public TreeNode search(int key) {
 		TreeNode p = root;
 		while (p != null) {
@@ -158,20 +157,52 @@ public class BSTTree extends Tree{
 		return null;
 	}
 
-	
+	public static boolean isValidBST(TreeNode root) {
+		if (root == null) {
+			return true;
+		}
 
+		boolean leftIsValid = isValidBST(root.left);
+		boolean rightIsValid = isValidBST(root.right);
+
+		if (leftIsValid && rightIsValid) {
+			if (root.left == null && root.right == null) {
+				return true;
+			} else if (root.left != null && root.right != null) {
+				TreeNode leftMax = getMaxRight(root.left);
+				TreeNode rightMin = getMaxLeft(root.right);
+				if (root.val > leftMax.val && root.val < rightMin.val) {
+					return true;
+				}
+			} else if (root.right != null) {
+				TreeNode rightMin = getMaxLeft(root.right);
+				if (root.val < rightMin.val) {
+					return true;
+				}
+			} else if (root.left != null) {
+				TreeNode leftMax = getMaxRight(root.left);
+				if (root.val > leftMax.val) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 
 	public static void main(String[] args) {
 		BSTTree tree = new BSTTree(15);
-		int[] data = { 4, 20, 1, 16, 25, 99 };
+		int[] data = { 4, 20, 1, 16, 25, 99, 23,17 };
 
 		for (int i = 0; i < data.length; i++) {
 			tree.add(new TreeNode(data[i]));
 		}
 
-		System.out.println(getHeight(tree.root));
-		System.out.println(Tree.getNodes(tree.root));
-		
+		BSTIterator iterator = new BSTIterator(tree.root);
+		while(iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+
 	}
 
 }
