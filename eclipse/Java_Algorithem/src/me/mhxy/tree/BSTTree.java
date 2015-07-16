@@ -118,6 +118,10 @@ public class BSTTree extends Tree {
 	}
 
 	public void add(TreeNode node) {
+		if (node == null) {
+			return;
+		}
+
 		if (root == null) {
 			root = node;
 			return;
@@ -129,9 +133,11 @@ public class BSTTree extends Tree {
 			if (node.val < child.val) {
 				parent = child;
 				child = child.left;
-			} else {
+			} else if (node.val > child.val) {
 				parent = child;
 				child = child.right;
+			} else {
+				return;
 			}
 		}
 		child = node;
@@ -140,7 +146,6 @@ public class BSTTree extends Tree {
 		} else {
 			parent.left = child;
 		}
-
 	}
 
 	public TreeNode search(int key) {
@@ -190,16 +195,29 @@ public class BSTTree extends Tree {
 		return false;
 	}
 
+	public TreeNode sortedArrayToBST(int[] nums) {
+		if (nums.length == 0) {
+			return null;
+		}
+		int mid = nums.length >> 1;
+		TreeNode root = new TreeNode(nums[mid]);
+		for (int i = 0; i < nums.length; i++) {
+			add(new TreeNode(nums[i]));
+		}
+
+		return root;
+	}
+
 	public static void main(String[] args) {
 		BSTTree tree = new BSTTree(15);
-		int[] data = { 4, 20, 1, 16, 25, 99, 23,17 };
+		int[] data = { 4, 20, 1, 16, 25, 99, 23, 17 };
 
 		for (int i = 0; i < data.length; i++) {
 			tree.add(new TreeNode(data[i]));
 		}
 
 		BSTIterator iterator = new BSTIterator(tree.root);
-		while(iterator.hasNext()) {
+		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
 

@@ -2,8 +2,10 @@ package me.mhxy.tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Tree {
 	public TreeNode root = null;
@@ -73,8 +75,8 @@ public class Tree {
 		}
 	}
 
-	public static LinkedList<TreeNode> inorderIteratively(TreeNode root) {
-		LinkedList<TreeNode> nodes = new LinkedList<TreeNode>();
+	public static List<Integer> inorderIteratively(TreeNode root) {
+		List<Integer> nodes = new LinkedList<Integer>();
 		LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
 
 		TreeNode cur = root;
@@ -85,8 +87,14 @@ public class Tree {
 			}
 
 			cur = stack.pop();
-			nodes.add(cur);
-			cur = cur.right;
+			if (cur.right == null) {
+				nodes.add(cur.val);
+				cur = null;
+			} else {
+				stack.push(cur);
+				cur = cur.right;
+			}
+
 		}
 
 		return nodes;
@@ -119,22 +127,37 @@ public class Tree {
 		}
 	}
 
-	public static LinkedList<TreeNode> postorderIteratively(TreeNode root) {
-		LinkedList<TreeNode> nodes = new LinkedList<TreeNode>();
+	public static List<Integer> postorderIteratively(TreeNode root) {
+		List<Integer> nodes = new LinkedList<Integer>();
 		LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
 
 		TreeNode cur = root;
-		while (cur != null || !stack.isEmpty()) {
-			while (cur != null) {
-				stack.push(cur);
-				cur = cur.left;
+		TreeNode visited = null;
+		while (!stack.isEmpty()) {
+			cur = stack.pop();
+			if (cur.left == null && cur.right == null) {
+				// 当前节点为叶子节点或者孩子节点都被访问过
+				nodes.add(cur.val);
+				stack.pop();
+				visited = cur;
+			} else if (visited != null) {
+				if (visited == cur.left || visited == cur.right) {
+					nodes.add(cur.val);
+					stack.pop();
+					visited = cur;
+				}
+
 			}
 
-			cur = stack.pop();
-			nodes.add(cur);
-			cur = cur.right;
+			else {
+				if (cur.right != null) {
+					stack.push(cur.right);
+				}
+				if (cur.left != null) {
+					stack.push(cur.left);
+				}
+			}
 		}
-
 		return nodes;
 	}
 
@@ -383,6 +406,28 @@ public class Tree {
 
 	}
 
+	public static void flatten(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+
+		flatten(root.left);
+		flatten(root.right);
+
+		TreeNode right = root.right;
+		TreeNode left = root.left;
+		root.left = null;
+		root.right = left;
+
+		TreeNode node = root;
+		while (node.right != null) {
+			node = node.right;
+		}
+		node.right = right;
+	}
+
+
+
 	public static void main(String[] args) {
 		BSTTree tree = new BSTTree(15);
 
@@ -391,17 +436,16 @@ public class Tree {
 		// };
 		List<String> list = Arrays.asList(data);
 		TreeNode root = init(list);
+		// flatten(root);
 
-		LinkedList<TreeNode> nodes = postorderIteratively(root);
-		LinkedList<Integer> ints = new LinkedList<Integer>();
-		for (TreeNode node : nodes) {
-			ints.add(node.val);
-		}
+		// LinkedList<TreeNode> nodes = postorderIteratively(root);
+		// LinkedList<Integer> ints = new LinkedList<Integer>();
+		// for (TreeNode node : nodes) {
+		// ints.add(node.val);
+		// }
 
-		List<List<Integer>> result = new LinkedList<List<Integer>>();
-		List<Integer> tmp = new LinkedList<Integer>();
-		getPaths(result, tmp, root);
-		System.out.println(getSumNum(0, root));
+		List<List<Integer>> result = levelOrder(root);
+		System.out.println(result);
 	}
 
 }
