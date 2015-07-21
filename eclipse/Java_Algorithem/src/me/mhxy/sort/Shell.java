@@ -9,15 +9,15 @@ public class Shell {
 	 * @param n
 	 */
 	public static void shell(int[] arr, int start, int end) {
-		int step = (end - start + 1) >> 1;
-		if (step == 1) {
+		int gap = arr.length / 2;
+		if (gap == 1) {
 			return;
 		}
 
-		while (step != 1) {
-			for (int i = 0; i < step; i++) {
-				for (int j = i; j < end; j += step) {
-					for (int k = j + step; k > i && k < end; k -= step) {
+		while (gap != 1) {
+			for (int i = 0; i < gap; i++) {
+				for (int j = i; j < end; j += gap) {
+					for (int k = j + gap; k > i && k < end; k -= gap) {
 						if (arr[k] < arr[j]) {
 							int temp = arr[k];
 							arr[k] = arr[j];
@@ -26,7 +26,7 @@ public class Shell {
 					}
 				}
 			}
-			step = step >> 1;
+			gap = gap >> 1;
 		}
 
 	}
@@ -41,7 +41,11 @@ public class Shell {
 			System.out.print(arr[i] + ",");
 		}
 
+		System.out.println("排序");
 		shell(arr, 0, arr.length - 1);
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + ",");
+		}
 	}
 
 }
