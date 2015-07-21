@@ -47,16 +47,20 @@ public class TwoWayMergeSort {
 		
 		return result;
 	}
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		int[] test = new int[]{1, 235, 3241, 23, 32, 3 };
-		test = sort(test);
-		for (int x : test) {
-			System.out.println(x);
-		}
 
+
+	public static void main(String[] args) {
+		int[] a = new int[10];
+		for (int i = 0; i < 10; i++) {
+			a[i] = (int) Math.floor(Math.random() * 21);
+			System.out.print(a[i] + ",");
+		}
+		System.out.println("排序");
+		sort(a);
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + ",");
+		}
+		return;
 	}
 
 }

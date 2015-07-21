@@ -20,7 +20,49 @@ public class SelectionSrot {
 		}
 	}
 	
+	public static void heapSort(int[] data) {
+		//初始化堆(把所有的非叶子节点下沉到合适的位置0
+		for(int i = data.length / 2 -1; i >= 0; i--) {
+			moveDown(data, i, data.length -1);
+		}
+		
+		//(迭代)将每一个叶子节点和根节点互换后,下沉
+		for(int i = data.length - 1; i >= 1; i--) {
+			int tmp = data[0];
+			data[0] = data[i];
+			data[i] = tmp;
+			
+			moveDown(data, 0, i - 1);
+		}
+	}
 	
+	/**
+	 * 将某个节点下沉到合适的位置
+	 */
+	private static void moveDown(int[] data, int first, int last) {
+		int child = 2 * first + 1;
+		while(child <= last) {
+			if(child < last && data[child] < data[child + 1]) {
+				child++;
+			}
+			
+			//与较大的孩子交换
+			//交换后继续递归交换,确保沉到最下边
+			if(data[first] < data[child]) {
+				int tmp = data[child];
+				data[child] = data[first];
+				data[first] = tmp;
+				
+				//递归重构子树,使得first不仅大于孩子节点
+				//而且大于子孙节点
+				first = child;
+				child = first*2 + 1;
+			} else {
+				//大于
+				child = last + 1;
+			}
+		}
+	}
 	
 	
 	public static void main(String[] args) {
@@ -30,7 +72,7 @@ public class SelectionSrot {
 			System.out.print(a[i] + ",");
 		}
 		System.out.println("排序");
-		selectionSort(a);
+		heapSort (a);
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i] + ",");
 		}

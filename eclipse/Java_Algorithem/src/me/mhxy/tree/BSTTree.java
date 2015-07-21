@@ -1,7 +1,5 @@
 package me.mhxy.tree;
 
-import java.util.LinkedList;
-import java.util.List;
 
 public class BSTTree extends Tree {
 	public TreeNode root = null;

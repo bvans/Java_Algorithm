@@ -1,5 +1,6 @@
 package me.mhxy.sort;
 
+
 public class InsertionSort {
 
 	/**
@@ -8,10 +9,12 @@ public class InsertionSort {
 	public static void insertionSort(int[] data) {
 		// 可以减少比较次数
 		int tmp;
-		int i, j;
-		for (i = 1; i < data.length; i++) {
+		for (int i = 1; i < data.length; i++) {
 			tmp = data[i];
-			for (j = i; j > 0 && tmp < data[j - 1]; j--) {
+			int j = i;
+			
+			//边界条件:退出时j=0;因此确保 j > 0
+			for (; j >= 1 && tmp < data[j - 1]; j--) {
 				// 比data[j]大的都向右移
 				data[j] = data[j - 1];
 			}
@@ -20,31 +23,35 @@ public class InsertionSort {
 	}
 
 	public static void shellSort(int[] data) {
+		//分组个数
 		int h = 1;
-		//h取1, 4, 13, 40, 121
-		//但是小于等于data.length/3
+		// h取1, 4, 13, 40, 121
+		// 但是小于等于data.length/3
 		while (h < data.length / 3) {
 			h = h * 3 + 1;
 		}
-		
-		for(; h >=1; h /= 3) {
-			//共有k个分组
-			for(int k = 0; k < h; k++) {
-				//对每个分组进行排序
-				for(int i = k + h; i < data.length; i += h) {
-					for (int j = i ; j >= h && data[j] < data[j - h]; j -= h) {
-						int tmp = data[j];
+
+		for (; h >= 1; h /= 3) {
+			// 共有h个分组
+			for (int k = 0; k < h; k++) {
+				// 对每个分组进行直接插入排序
+				for (int i = k + h; i < data.length; i += h) {
+					int tmp = data[i];
+					int j = i;
+					//边界条件j=h;因此确保 j >= h 
+					for (; j >= k + h  && tmp < data[j - h]; j -= h) {
 						data[j] = data[j - h];
-						data[j - h] = tmp;
 					}
+					data[j] = tmp;
 				}
 			}
 		}
 	}
 
 	public static void main(String[] args) {
-		int[] a = new int[10];
-		for (int i = 0; i < 10; i++) {
+		int len = (int) Math.floor(Math.random() * 15);
+		int[] a = new int[len];
+		for (int i = 0; i < a.length; i++) {
 			a[i] = (int) Math.floor(Math.random() * 21);
 			System.out.print(a[i] + ",");
 		}
@@ -53,6 +60,7 @@ public class InsertionSort {
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i] + ",");
 		}
+		
 
 		return;
 	}
