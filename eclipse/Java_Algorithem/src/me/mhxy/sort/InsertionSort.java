@@ -24,23 +24,23 @@ public class InsertionSort {
 
 	public static void shellSort(int[] data) {
 		//分组个数
-		int h = 1;
+		int gap = 1;
 		// h取1, 4, 13, 40, 121
 		// 但是小于等于data.length/3
-		while (h < data.length / 3) {
-			h = h * 3 + 1;
+		while (gap < data.length / 3) {
+			gap = gap * 3 + 1;
 		}
 
-		for (; h >= 1; h /= 3) {
+		for (; gap >= 1; gap /= 3) {
 			// 共有h个分组
-			for (int k = 0; k < h; k++) {
+			for (int group = 0; group < gap; group++) {
 				// 对每个分组进行直接插入排序
-				for (int i = k + h; i < data.length; i += h) {
+				for (int i = group + gap; i < data.length; i += gap) {
 					int tmp = data[i];
 					int j = i;
 					//边界条件j=h;因此确保 j >= h 
-					for (; j >= k + h  && tmp < data[j - h]; j -= h) {
-						data[j] = data[j - h];
+					for (; j >= group + gap  && tmp < data[j - gap]; j -= gap) {
+						data[j] = data[j - gap];
 					}
 					data[j] = tmp;
 				}
@@ -60,8 +60,6 @@ public class InsertionSort {
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i] + ",");
 		}
-		
-
 		return;
 	}
 }

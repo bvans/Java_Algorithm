@@ -21,12 +21,13 @@ public class SelectionSrot {
 	}
 	
 	public static void heapSort(int[] data) {
-		//初始化堆(把所有的非叶子节点下沉到合适的位置0
-		for(int i = data.length / 2 -1; i >= 0; i--) {
+		//初始化堆, 保证所有的非叶子节点都大于其子孙
+		for(int i = data.length / 2 - 1; i >= 0; i--) {
 			moveDown(data, i, data.length -1);
 		}
 		
-		//(迭代)将每一个叶子节点和根节点互换后,下沉
+		//(迭代), 依次将最大值放到叶子上
+		//最后一个位置肯定不用排了, 因为前n-1个都放置正确了
 		for(int i = data.length - 1; i >= 1; i--) {
 			int tmp = data[0];
 			data[0] = data[i];
@@ -38,6 +39,7 @@ public class SelectionSrot {
 	
 	/**
 	 * 将某个节点下沉到合适的位置
+	 * 保证first节点的值大于其所有的子孙值
 	 */
 	private static void moveDown(int[] data, int first, int last) {
 		int child = 2 * first + 1;
@@ -59,7 +61,7 @@ public class SelectionSrot {
 				child = first*2 + 1;
 			} else {
 				//大于
-				child = last + 1;
+				break;
 			}
 		}
 	}
