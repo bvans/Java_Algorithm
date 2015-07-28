@@ -37,12 +37,11 @@ public class InsertionSort {
 				// 对每个分组进行直接插入排序
 				for (int i = group + gap; i < data.length; i += gap) {
 					int tmp = data[i];
-					int j = i;
-					//边界条件j=h;因此确保 j >= h 
-					for (; j >= group + gap  && tmp < data[j - gap]; j -= gap) {
-						data[j] = data[j - gap];
+					int j = i - gap;
+					for(; j >= group && data[j] > tmp; j -= gap) {
+						data[j + gap] = data[j];
 					}
-					data[j] = tmp;
+					data[j + gap] = tmp; 
 				}
 			}
 		}

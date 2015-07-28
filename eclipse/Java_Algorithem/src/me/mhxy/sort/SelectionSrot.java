@@ -43,6 +43,7 @@ public class SelectionSrot {
 	 */
 	private static void moveDown(int[] data, int first, int last) {
 		int child = 2 * first + 1;
+		//显然,儿子是最后一个节点时也要参与交换的
 		while(child <= last) {
 			if(child < last && data[child] < data[child + 1]) {
 				child++;
