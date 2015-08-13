@@ -1,5 +1,7 @@
 package me.mhxy.search;
 
+import java.util.PriorityQueue;
+
 public class BinarySearch {
 	
 	/**二分查找
@@ -11,6 +13,7 @@ public class BinarySearch {
 	public static int search(int[] arr, int n, int key) {
 		int left = 0;
 		int right = n - 1;
+		PriorityQueue  q;
 
 		while (left <= right) {
 			int mid = (left + right) >> 1;
