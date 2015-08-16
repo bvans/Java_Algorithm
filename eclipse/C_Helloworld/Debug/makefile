@@ -24,19 +24,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: C_Helloworld.exe
+all: 1C_Helloworld.exe
 
 # Tool invocations
-C_Helloworld.exe: $(OBJS) $(USER_OBJS)
+1C_Helloworld.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cygwin C Linker'
-	gcc  -o "C_Helloworld.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o "1C_Helloworld.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) C_Helloworld.exe
+	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) 1C_Helloworld.exe
 	-@echo ' '
 
 .PHONY: all clean dependents

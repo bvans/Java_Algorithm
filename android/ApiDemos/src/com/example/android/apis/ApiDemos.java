@@ -16,15 +16,6 @@
 
 package com.example.android.apis;
 
-import android.app.ListActivity;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,6 +23,16 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import android.app.ListActivity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 public class ApiDemos extends ListActivity {
 
@@ -46,6 +47,15 @@ public class ApiDemos extends ListActivity {
             path = "";
         }
 
+        List<Map<String, Object>> rcvIntentData = getData(path);
+        Map<String, Object> map = rcvIntentData.get(0);
+        for(String key : map.keySet()) {
+        	Object o = map.get(key);
+        	System.out.println(key + ":" + o.toString());
+        }
+        
+        
+        Log.d("myTag", rcvIntentData.toString());
         setListAdapter(new SimpleAdapter(this, getData(path),
                 android.R.layout.simple_list_item_1, new String[] { "title" },
                 new int[] { android.R.id.text1 }));

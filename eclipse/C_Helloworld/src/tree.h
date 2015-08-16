@@ -19,3 +19,4 @@ typedef struct node {
 
 void init(int data[], int len, Node *root);
 Node empty();
+

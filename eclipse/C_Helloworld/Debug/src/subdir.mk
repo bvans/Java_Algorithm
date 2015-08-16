@@ -8,6 +8,7 @@ C_SRCS += \
 ../src/main.c \
 ../src/quickSort.c \
 ../src/sundayMatch.c \
+../src/test.c \
 ../src/util.c 
 
 OBJS += \
@@ -15,6 +16,7 @@ OBJS += \
 ./src/main.o \
 ./src/quickSort.o \
 ./src/sundayMatch.o \
+./src/test.o \
 ./src/util.o 
 
 C_DEPS += \
@@ -22,6 +24,7 @@ C_DEPS += \
 ./src/main.d \
 ./src/quickSort.d \
 ./src/sundayMatch.d \
+./src/test.d \
 ./src/util.d 
 
 
