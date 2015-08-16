@@ -9,6 +9,18 @@ interface Bitmap {
 }
 
 class ImgCache<K> extends LruCache<K, Bitmap> {
+	
+	public static void main(String[] args) {
+		LruCache<String, Integer> lru = new LruCache<String, Integer>(2);
+		lru.put("1", 1);
+		lru.put("2", 2);
+		lru.put("3", 3);
+		lru.put("4", 4);
+		
+		System.out.println(lru.size());
+		int a = lru.get("3");
+		System.out.println(a);
+	}
 
 	public ImgCache(int maxSize) {
 		super(maxSize);

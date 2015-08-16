@@ -1,9 +1,12 @@
 package me.mhxy.list;
 
+import java.util.Stack;
+
 public class DblList {
 	private DblNode head, tail;
 	
 	public DblList() {
+		Stack s;
 		head = null;
 		tail = null;
 	}

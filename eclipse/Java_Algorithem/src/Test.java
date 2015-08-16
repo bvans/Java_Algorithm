@@ -2,12 +2,14 @@ import java.util.*;
 
 public class Test {
 	public static void main(String args[]) {
-		Scanner cin = new Scanner(System.in);
-		final double PI = 3.1415927;
-		while (cin.hasNextLine()) {
-			double r = cin.nextDouble();
-			System.out.printf("%.3f", 4.0 * PI * r * r * r/3);
-			System.out.println();
-		}
+		ArrayDeque deque = new ArrayDeque<Integer>(1);
+		deque.add(1);
+		deque.add(2);
+		deque.removeFirst();
+	}
+	
+	public static void op(StringBuffer a, StringBuffer b) {
+		a.append("b");
+		b = a;
 	}
 }
