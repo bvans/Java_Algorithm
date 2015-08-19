@@ -98,6 +98,5 @@ public class SelectionSrot {
 
 		System.out.println("排序算法正确");
 
-		return;
 	}
 }

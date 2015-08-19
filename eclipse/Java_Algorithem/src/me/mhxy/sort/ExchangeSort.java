@@ -1,5 +1,7 @@
 package me.mhxy.sort;
 
+import java.util.Arrays;
+
 public class ExchangeSort {
 	/**
 	 * n-1趟, 每趟选择最大的值放在右边
@@ -46,17 +48,26 @@ public class ExchangeSort {
 	}
 
 	public static void main(String[] args) {
-		int len = (int) Math.floor(Math.random() * 15);
-		int[] a = new int[len];
-		for (int i = 0; i < a.length; i++) {
-			a[i] = (int) Math.floor(Math.random() * 21);
-			System.out.print(a[i] + ",");
+		for (int j = 0; j < 10e4; j++) {
+			int[] sample = new int[10];
+			for (int i = 0; i < 10; i++) {
+				sample[i] = (int) Math.floor(Math.random() * 21);
+			}
+
+			int[] sorted = Arrays.copyOf(sample, sample.length);
+			Arrays.sort(sorted);
+			bubbleSort(sample);
+
+			if (!Arrays.equals(sorted, sample)) {
+				try {
+					throw new Exception("排序失败");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		System.out.println("排序");
-		quickSort(a);
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + ",");
-		}
+
+		System.out.println("排序算法正确");
 		return;
 	}
 

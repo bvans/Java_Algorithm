@@ -1,5 +1,6 @@
 package me.mhxy.sort;
 
+import java.util.Arrays;
 
 public class InsertionSort {
 
@@ -12,8 +13,8 @@ public class InsertionSort {
 		for (int i = 1; i < data.length; i++) {
 			tmp = data[i];
 			int j = i;
-			
-			//边界条件:退出时j=0;因此确保 j > 0
+
+			// 边界条件:退出时j=0;因此确保 j > 0
 			for (; j >= 1 && tmp < data[j - 1]; j--) {
 				// 比data[j]大的都向右移
 				data[j] = data[j - 1];
@@ -23,7 +24,7 @@ public class InsertionSort {
 	}
 
 	public static void shellSort(int[] data) {
-		//分组个数
+		// 分组个数
 		int gap = 1;
 		// h取1, 4, 13, 40, 121
 		// 但是小于等于data.length/3
@@ -38,27 +39,36 @@ public class InsertionSort {
 				for (int i = group + gap; i < data.length; i += gap) {
 					int tmp = data[i];
 					int j = i - gap;
-					for(; j >= group && data[j] > tmp; j -= gap) {
+					for (; j >= group && data[j] > tmp; j -= gap) {
 						data[j + gap] = data[j];
 					}
-					data[j + gap] = tmp; 
+					data[j + gap] = tmp;
 				}
 			}
 		}
 	}
 
 	public static void main(String[] args) {
-		int len = (int) Math.floor(Math.random() * 15);
-		int[] a = new int[len];
-		for (int i = 0; i < a.length; i++) {
-			a[i] = (int) Math.floor(Math.random() * 21);
-			System.out.print(a[i] + ",");
+		for (int j = 0; j < 10e4; j++) {
+			int[] sample = new int[10];
+			for (int i = 0; i < 10; i++) {
+				sample[i] = (int) Math.floor(Math.random() * 21);
+			}
+
+			int[] sorted = Arrays.copyOf(sample, sample.length);
+			Arrays.sort(sorted);
+			shellSort(sample);
+
+			if (!Arrays.equals(sorted, sample)) {
+				try {
+					throw new Exception("排序失败");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		System.out.println("排序");
-		shellSort(a);
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + ",");
-		}
+
+		System.out.println("排序算法正确");
 		return;
 	}
 }

@@ -9,6 +9,7 @@ public class AOP {
 		StudentInfoService studentInfo = (StudentInfoService) AOPFacotry
 				.getAOPProxyObject("designPatterns.StudentInfoServiceImpl");
 		studentInfo.findInfo("阿飞");
+		String s;
 	}
 }
 

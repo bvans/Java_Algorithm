@@ -1,72 +1,30 @@
 package me.mhxy.sort;
 
+import java.util.Arrays;
+
 public class MergeSort {
-	public static int[] temp;
 
-	public static int[] sort(int[] arr) {
-		if (arr.length <= 1) {
-			return arr;
-		}
-
-		int half = arr.length / 2;
-		int[] subArr1 = new int[half];
-		int[] subArr2 = new int[arr.length - half];
-
-		System.arraycopy(arr, 0, subArr1, 0, subArr1.length);
-		System.arraycopy(arr, half, subArr2, 0, subArr2.length);
-
-		subArr1 = sort(subArr1);
-		subArr2 = sort(subArr2);
-
-		return mergeSortSub(subArr1, subArr2);
-	}
-
-	private static int[] mergeSortSub(int[] arr1, int[] arr2) {
-		int[] result = new int[arr1.length + arr2.length];
-
-		int i = 0;
-		int j = 0;
-		int k = 0;
-
-		while (i < arr1.length && j < arr2.length) {
-			if (arr1[i] < arr2[j]) {
-				result[k++] = arr1[i++];
-			} else {
-				result[k++] = arr2[j++];
-			}
-		}
-
-		while (i < arr1.length) {
-			result[k++] = arr1[i++];
-		}
-
-		while (j < arr2.length) {
-			result[k++] = arr2[j++];
-		}
-
-		return result;
-	}
-
-	private static void mergeSort(int[] data, int start, int end) {
+	private static void mergeSort(int[] data, int[] temp, int start, int end) {
 		if (start < end) {
+			//直到子数组的长度为1, 直接合并
 			int mid = ((start + end) >> 1);
-			mergeSort(data, start, mid);
-			mergeSort(data, mid + 1, end);
-			merge(data, start, end);
+			mergeSort(data, temp, start, mid);
+			mergeSort(data, temp, mid + 1, end);
+			merge(data, temp, start, end);
 		}
 	}
 
-	private static void merge(int[] data, int start, int end) {
+	private static void merge(int[] data, int[] temp, int start, int end) {
 		int mid = ((start + end) >> 1);
 
-		int i = 0;
+		int i = start; // temp的指针
 		int j = start; // 左半部分的指针
 		int k = mid + 1; // 右半部的指针
 		while (j <= mid && k <= end) {
 			if (data[j] < data[k]) {
-				temp[i++] = temp[j++];
+				temp[i++] = data[j++];
 			} else {
-				temp[i++] = temp[k++];
+				temp[i++] = data[k++];
 			}
 		}
 		while (j <= mid) {
@@ -76,26 +34,42 @@ public class MergeSort {
 			temp[i++] = data[k++];
 		}
 
-		for (i = 0, j = start; j <= end; data[j++] = data[i++])
-			;
+		for (i = start; i <= end; ++i) {
+			data[i] = temp[i];
+		}
 	}
 
 	public static void mergesort(int[] data) {
-		temp = new int[data.length];
-		mergeSort(data, 0, data.length - 1);
+		//需要n个额外空间
+		int[] temp = new int[data.length];
+		mergeSort(data, temp, 0, data.length - 1);
 	}
 
 	public static void main(String[] args) {
-		int[] a = new int[10];
-		for (int i = 0; i < 10; i++) {
-			a[i] = (int) Math.floor(Math.random() * 21);
-			System.out.print(a[i] + ",");
-		}
-		System.out.println("排序");
+		int[] a = new int[] { 3, 1, 2, 4 };
 		mergesort(a);
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + ",");
+
+		for (int j = 0; j < 10e4; j++) {
+			int[] sample = new int[10];
+			for (int i = 0; i < 10; i++) {
+				sample[i] = (int) Math.floor(Math.random() * 21);
+			}
+
+			int[] sorted = Arrays.copyOf(sample, sample.length);
+			Arrays.sort(sorted);
+			mergesort(sample);
+
+			if (!Arrays.equals(sorted, sample)) {
+				try {
+					throw new Exception("排序失败");
+				} catch (Exception e) {
+					e.printStackTrace();
+					return;
+				}
+			}
 		}
+
+		System.out.println("排序算法正确");
 		return;
 	}
 
