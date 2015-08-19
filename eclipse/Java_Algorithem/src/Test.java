@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,16 +26,23 @@ public class Test {
 //		    String price=matcher.group(3);
 //		}
 
-		String test = "abcdefgh";
-		String reg = new Scanner(System.in).next();
-		reg = reg.replace("*", ".*?");
-		System.out.println(reg);
-		Matcher matcher = Pattern.compile(reg).matcher(test);
-		while(matcher.find()) {
-			System.out.println(matcher.group());
+//		String test = "abcdefgh";
+//		String reg = new Scanner(System.in).next();
+//		reg = reg.replace("*", ".*?");
+//		System.out.println(reg);
+//		Matcher matcher = Pattern.compile(reg).matcher(test);
+//		while(matcher.find()) {
+//			System.out.println(matcher.group());
+//		}
+		
+		try {
+			File file1 = File.createTempFile("haha", null);
+			File file2 = File.createTempFile("haha", null);
+			System.out.println();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		
 		
 		
 		
