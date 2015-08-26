@@ -1,11 +1,12 @@
 package algorithm.tree;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.TreeSet;
+import java.util.Queue;
 
 public class Tree {
 	public TreeNode root = null;
@@ -77,7 +78,7 @@ public class Tree {
 
 	public static List<Integer> inorderIteratively(TreeNode root) {
 		List<Integer> nodes = new LinkedList<Integer>();
-		LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+		Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
 
 		TreeNode cur = root;
 		while (cur != null || !stack.isEmpty()) {
@@ -163,6 +164,7 @@ public class Tree {
 
 	public static void bfs(TreeNode root) {
 		LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+		Queue q;
 		if (root != null) {
 			queue.addLast(root);
 			while (!queue.isEmpty()) {

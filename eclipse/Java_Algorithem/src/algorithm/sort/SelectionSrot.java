@@ -1,10 +1,6 @@
 package algorithm.sort;
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Deque;
-import java.util.Vector;
-import java.util.concurrent.FutureTask;
 
 public class SelectionSrot {
 	/**
@@ -14,7 +10,7 @@ public class SelectionSrot {
 		for (int i = 0; i < data.length - 1; i++) {
 			int least = i;
 			for (int j = i + 1; j < data.length; j++) {
-				if (data[j] <= data[least]) {
+				if (data[j] < data[least]) {
 					least = j;
 				}
 			}
@@ -56,9 +52,6 @@ public class SelectionSrot {
 			// 找到较大的孩子
 			if (child < last && data[child] < data[child + 1]) {
 				child++;
-				Deque q = new ArrayDeque();
-				Vector v;
-				FutureTask t;
 			}
 
 			// 与较大的孩子交换
@@ -89,7 +82,7 @@ public class SelectionSrot {
 
 			int[] sorted = Arrays.copyOf(sample, sample.length);
 			Arrays.sort(sorted);
-			heapSort(sample);
+			selectionSort(sample);
 
 			if (!Arrays.equals(sorted, sample)) {
 				throw new Exception("排序失败");
