@@ -1,40 +1,63 @@
 package algorithm.sort;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Arrays;
 
 public class Test {
+	
+	public static void insertSort(int[] data) {
+		for(int i = 1; i < data.length; i++) {
+			int j = i - 1;
+			int tmp = data[i];
+			for(; j >= 0 && data[j] > tmp; j--) {
+				data[j + 1] = data[j];
+			}
+			data[j + 1] = tmp;
+		}
+	}
 
-	public void radixsort(int[] data) {
-		int radix = 10;
-		int digits = 10;
+	public static void shellSort(int[] data) {
+		int gap = 1;
+		while (gap < data.length / 3) {
+			gap = gap * 3 + 1;
+		}
 
-		int d, j, k, factor;
-		Queue[] queues = new Queue[radix]; // radix is 10;
-		for (d = 0; d < radix; d++)
-			queues[d] = new LinkedList<Integer>();
-		for (d = 1, factor = 1; d <= digits; factor *= radix, d++) {
-			for (j = 0; j < data.length; j++)
-				queues[(data[j] / factor) % radix].add(new Integer(data[j]));
-			for (j = k = 0; j < radix; j++)
-				while (!queues[j].isEmpty())
-					data[k++] = ((Integer) queues[j].remove()).intValue();
+		for (; gap >= 1; gap /= 3) {
+			for (int group = 0; group < gap; group++) {
+				for (int i = group + gap; i < data.length; i += gap) {
+					int tmp = data[i];
+					int j = i - gap;
+					for(; j >= group && data[j] > tmp; j -= gap) {
+						data[j + gap] = data[j];
+					}
+					data[j + gap] = tmp;
+				}
+			}
 		}
 	}
 
 	public static void main(String[] args) {
-		int len = (int) Math.floor(Math.random() * 15);
-		int[] a = new int[len];
-		for (int i = 0; i < a.length; i++) {
-			a[i] = (int) Math.floor(Math.random() * 21);
-			System.out.print(a[i] + ",");
+
+		for (int j = 0; j < 10e4; j++) {
+			int[] sample = new int[10];
+			for (int i = 0; i < 10; i++) {
+				sample[i] = (int) Math.floor(Math.random() * 21);
+			}
+
+			int[] sorted = Arrays.copyOf(sample, sample.length);
+			Arrays.sort(sorted);
+			insertSort(sample);
+
+			if (!Arrays.equals(sorted, sample)) {
+				try {
+					throw new Exception("排序失败");
+				} catch (Exception e) {
+					e.printStackTrace();
+					return;
+				}
+			}
 		}
-		System.out.println("排序");
-		new Test().radixsort(a);
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + ",");
-		}
-		return;
+
+		System.out.println("排序算法正确");
 	}
 
 }

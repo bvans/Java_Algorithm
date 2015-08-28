@@ -17,14 +17,14 @@ public class SundaySearch {
 			return -1;
 
 		char[] src = parent.toCharArray();
-		char[] pattern = child.toCharArray();
+		char[] sub = child.toCharArray();
 
 		
 
 		HashMap<Character, Integer> hashMap = new HashMap<Character, Integer>();
 
 		for (int i = 0; i < patternLen; i++)
-			hashMap.put(pattern[i], patternLen - i);
+			hashMap.put(sub[i], patternLen - i);
 
 		int head = 0;
 		int rail = head + patternLen - 1;
@@ -32,7 +32,7 @@ public class SundaySearch {
 		while (rail <= srcLen - 1 ) {
 			int i;
 			for (i = 0; i < patternLen; i++) {
-				if (pattern[i] != src[head + i])
+				if (sub[i] != src[head + i])
 					break;
 			}
 
@@ -58,8 +58,8 @@ public class SundaySearch {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String parent = "b";
-		String child = "a";
+		String parent = "bcfadsf";
+		String child = "dcf";
 
 		System.out.println(parent);
 		System.out.println(child);

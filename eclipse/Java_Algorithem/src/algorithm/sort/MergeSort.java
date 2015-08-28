@@ -2,6 +2,8 @@ package algorithm.sort;
 
 import java.util.Arrays;
 
+import javax.annotation.Generated;
+
 public class MergeSort {
 
 	private static void mergeSort(int[] data, int[] temp, int start, int end) {
@@ -70,7 +72,6 @@ public class MergeSort {
 		}
 
 		System.out.println("排序算法正确");
-		return;
 	}
 
 }

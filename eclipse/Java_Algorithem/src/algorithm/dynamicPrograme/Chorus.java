@@ -1,4 +1,4 @@
-package huaweiOJ;
+package algorithm.dynamicPrograme;
 
 import java.util.Scanner;
 
