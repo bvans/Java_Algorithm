@@ -1,6 +1,7 @@
 package algorithm.sort;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class SelectionSrot {
 	/**
@@ -14,6 +15,8 @@ public class SelectionSrot {
 					least = j;
 				}
 			}
+			List l;
+			
 			int tmp = data[least];
 			data[least] = data[i];
 			data[i] = tmp;
