@@ -17,15 +17,16 @@ public class UnsafeTest {
 
 	public static void main(String[] args) {
 		UnsafeTest test = new UnsafeTest();
-
+		
 		Node[] nodes = new Node[10];
 		for (int i = 0; i < nodes.length; i++) {
 			nodes[i] = test.new Node(i);
 		}
-
+		
 		Node target = (Node) test.getObjectVolatile(nodes, 3);
 		System.out.println(target.data);
-
+		
+		
 	}
 
 	Object getObjectVolatile(Object[] array, int index) {

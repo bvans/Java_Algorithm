@@ -163,8 +163,7 @@ public class Tree {
 	}
 
 	public static void bfs(TreeNode root) {
-		LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-		Queue q;
+		Deque<TreeNode> queue = new LinkedList<TreeNode>();
 		if (root != null) {
 			queue.addLast(root);
 			while (!queue.isEmpty()) {
@@ -427,8 +426,6 @@ public class Tree {
 		}
 		node.right = right;
 	}
-
-
 
 	public static void main(String[] args) {
 		BSTTree tree = new BSTTree(15);

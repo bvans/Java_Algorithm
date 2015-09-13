@@ -10,9 +10,9 @@ public class BinarySearch {
 	 * @param 需要查找的int值
 	 * @return 返回key值在数组中的位置, 未找到则返回-1
 	 */
-	public static int search(int[] arr, int n, int key) {
+	public static int search(int[] arr, int key) {
 		int left = 0;
-		int right = n - 1;
+		int right = arr.length - 1;
 
 		while (left <= right) {
 			int mid = (left + right) >> 1;
@@ -25,12 +25,12 @@ public class BinarySearch {
 				return mid;
 			}
 		}	
-		return left;
+		return -1;
 	}
 
 	public static void main(String[] args) {
 		int[] test = new int[] { 1, 34, 344, 355, 3000, 8888 };
-		int result = search(test, test.length, -1);
+		int result = search(test, 10000);
 		System.out.println(result);
 	}
 }

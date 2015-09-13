@@ -19,8 +19,60 @@ public class ExchangeSort {
 		}
 	}
 
+	static class ClassicQuickSort {
+		public static void sort(int[] data) {
+			if (data.length <= 1) {
+				return;
+			}
+			sort(data, 0, data.length - 1);
+		}
+
+		private static void sort(int[] data, int start, int end) {
+
+			int index = partition(data, 0, data.length - 1);
+			if (index > start) {
+				quickSort(data, start, index - 1);
+			}
+
+			if (index < end) {
+				quickSort(data, index + 1, end);
+			}
+
+		}
+
+		private static int partition(int[] data, int start, int end) {
+			if (start >= end || end >= data.length) {
+				return -1;
+			}
+
+			int index = (int) (Math.random() * (end - start + 1) + start);
+			int val = data[index];
+			int tmp = data[index];
+			data[index] = data[start];
+			data[start] = tmp;
+
+			while (start < end) {
+				while (start < end && data[end] > val) {
+					end--;
+				}
+				if (start < end) {
+					data[start++] = data[end];
+				}
+
+				while (start < end && data[start] < val) {
+					start++;
+				}
+				if (start < end) {
+					data[end--] = data[start];
+				}
+			}
+			data[start] = val;
+			return start;
+		}
+	}
+
 	private static void quickSort(int arr[], int start, int end) {
-		if (start >= end || arr.length <= end)
+		if (start >= end || end >= arr.length)
 			return;
 		int left = start;
 		int right = end;
@@ -30,6 +82,7 @@ public class ExchangeSort {
 			while (left < right && arr[right] > value)
 				right--;
 			if (left < right)
+				// 下一步从左边开始比较, 但是提前让left自增
 				arr[left++] = arr[right];
 
 			while (left < right && arr[left] < value)
@@ -49,8 +102,8 @@ public class ExchangeSort {
 
 	public static void main(String[] args) {
 		for (int j = 0; j < 10e4; j++) {
-			int[] sample = new int[10];
-			for (int i = 0; i < 10; i++) {
+			int[] sample = new int[6];
+			for (int i = 0; i < sample.length; i++) {
 				sample[i] = (int) Math.floor(Math.random() * 21);
 			}
 

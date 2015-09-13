@@ -1,6 +1,7 @@
 package algorithm.sort;
 
 import java.util.Arrays;
+import java.util.Calendar;
 
 import javax.annotation.Generated;
 
@@ -17,25 +18,27 @@ public class MergeSort {
 	}
 
 	private static void merge(int[] data, int[] temp, int start, int end) {
+		//data的start -- mid和mid+1 -- end两部分是局部有序的
 		int mid = ((start + end) >> 1);
 
 		int i = start; // temp的指针
-		int j = start; // 左半部分的指针
-		int k = mid + 1; // 右半部的指针
-		while (j <= mid && k <= end) {
-			if (data[j] < data[k]) {
-				temp[i++] = data[j++];
+		int left = start; //data左半部分的开始
+		int right = mid + 1; //data右半部的开始
+		while (left <= mid && right <= end) {
+			if (data[left] < data[right]) {
+				temp[i++] = data[left++];
 			} else {
-				temp[i++] = data[k++];
+				temp[i++] = data[right++];
 			}
 		}
-		while (j <= mid) {
-			temp[i++] = data[j++];
+		while (left <= mid) {
+			temp[i++] = data[left++];
 		}
-		while (k <= end) {
-			temp[i++] = data[k++];
+		while (right <= end) {
+			temp[i++] = data[right++];
 		}
 
+		//将temp中start--end的有序部分拷回到data
 		for (i = start; i <= end; ++i) {
 			data[i] = temp[i];
 		}
